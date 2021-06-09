@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>フィルタ処理例{{ 3744 | numberWithDelimiter }}</p>
+  </div>
+  <script>
+    const items = [
+      {
+        name: '鉛筆',
+        price: 300,
+        quantity: 0
+      },
+      {
+        name: 'ノート',
+        price: 400,
+        quantity: 0
+      },
+      {
+        name: '消しゴム',
+        price: 500,
+        quantity: 0
+      },
+    ]
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        items: items
+      },
+      filters: {
+        numberWithDelimiter: function (value) {
+          if (!value) {
+            return '0'
+          }
+          return value.toLacaleString()
+        }
+      }
+    })
+    vm.items[0].name = "万年筆";
+  </script>
+</body>
+
+</html>
